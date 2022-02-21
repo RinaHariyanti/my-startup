@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,4 +16,23 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+//route view
+Route::view('/home', 'viewName');
+
+//route redirect
+Route::redirect('/lama', '/baru', 301);
+
+//router with required parameter and controller laravel 8
+Route::get('/user/{id}', [UserController::class, 'show']);
+
+//route parameter
+Route::get('/user/{id}', function ($id){
+    return 'User ID: ' . $id;
+});
+
+//route with opsional parameter
+Route::get('/user/{id}', function ($id = null){
+    return 'User ID: ' . $id;
 });
