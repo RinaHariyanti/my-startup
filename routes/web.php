@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,26 +12,43 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::get('/', function () {
     return view('welcome');
 });
 
-//route view
-Route::view('/home', 'viewName');
-
-//route redirect
-Route::redirect('/lama', '/baru', 301);
-
-//router with required parameter and controller laravel 8
-Route::get('/user/{id}', [UserController::class, 'show']);
-
-//route parameter
-Route::get('/user/{id}', function ($id){
-    return 'User ID: ' . $id;
+Route::get('/welcome', function () {
+    return view('welcome');
 });
 
-//route with opsional parameter
-Route::get('/user/{id}', function ($id = null){
-    return 'User ID: ' . $id;
+Route::get('/about', function () {
+    return view('about');
 });
+
+Route::get('/404', function () {
+    return view('404');
+});
+
+Route::get('/blog-details', function () {
+    return view('blog-details');
+});
+
+Route::get('/blog-grids', function () {
+    return view('blog-grids');
+});
+
+Route::get('/contact', function () {
+    return view('contact');
+});
+
+Route::get('/pricing', function () {
+    return view('pricing');
+});
+
+Route::get('/signin', function () {
+    return view('signin');
+});
+
+Route::get('/signup', function () {
+    return view('signup');
+});
+
